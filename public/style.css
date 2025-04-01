@@ -1,0 +1,327 @@
+/* Global Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #f7f7f7;
+  color: #333;
+  padding: 20px;
+}
+
+/* ---------- Form Pages (Login & Register) ---------- */
+.form-container {
+  background: #fff;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.form-container h2 {
+  margin-bottom: 25px;
+  font-weight: 300;
+  color: #333;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.form-container button {
+  padding: 12px;
+  background: #4a90e2;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-container button:hover {
+  background: #407ec9;
+}
+
+.form-container a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Documents List Page ---------- */
+.documents-container {
+  background: linear-gradient(145deg, #ffffff, #f4f7f9);
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.documents-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.documents-container header h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.new-doc-btn {
+  padding: 12px 24px;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+  font-size: 1rem;
+}
+
+.new-doc-btn:hover {
+  background-color: #407ec9;
+}
+
+.documents-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.document-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.document-item a.doc-title {
+  font-size: 1.5rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.document-item a.doc-title:hover {
+  text-decoration: underline;
+}
+
+.document-item small {
+  margin-top: 10px;
+  color: #777;
+}
+
+.doc-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.rename-form input[type="text"] {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.rename-btn {
+  padding: 8px 12px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.rename-btn:hover {
+  background-color: #407ec9;
+}
+
+.delete-btn {
+  padding: 8px 12px;
+  background-color: #d0021b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #b00117;
+}
+
+/* ---------- New Document Page ---------- */
+.new-document-container {
+  background: #fff;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.new-document-container h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.new-document-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.new-document-container input[type="text"] {
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.new-document-container button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.new-document-container button:hover {
+  background-color: #407ec9;
+}
+
+/* ---------- Editor Page ---------- */
+.editor-container {
+  background: #fff;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.editor-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.editor-container header h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.nav-links a {
+  padding: 8px 14px;
+  background: #4a90e2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.nav-links a:hover {
+  background: #407ec9;
+}
+
+.editor-container .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.editor-container .toolbar button {
+  background: #4a90e2;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.editor-container .toolbar button:hover {
+  background: #407ec9;
+}
+
+.editor-container .toolbar button.clear {
+  background: #d0021b;
+}
+
+.editor-container .toolbar button.clear:hover {
+  background: #b00117;
+}
+
+.editor {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-height: 500px;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  background: #fafafa;
+  overflow-y: auto;
+}
+
+.autosave-notification {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* ---------- Logout Button (Common) ---------- */
+.logout-btn {
+  background-color: #d0021b;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #b00117;
+}

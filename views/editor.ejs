@@ -1,24 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Text Editor</title>
-  <style>
-    textarea {
-      width: 80%;
-      height: 400px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= document.title %> - Text Editor</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <h2>Welcome, <%= user.username %></h2>
-  <form method="POST" action="/logout">
-    <button type="submit">Logout</button>
-  </form>
-  <h3>Text Editor</h3>
-  <textarea id="editor" placeholder="Type your text here..."></textarea>
+  <div class="editor-container">
+    <header>
+      <h1><%= document.title %></h1>
+      <div class="nav-links">
+        <a href="/documents">My Documents</a>
+        <form action="/logout" method="POST" class="logout-form">
+          <button type="submit" class="logout-btn">Logout</button>
+        </form>
+      </div>
+    </header>
+    <div class="toolbar">
+      <button onclick="execCmd('bold')"><b>B</b></button>
+      <button onclick="execCmd('italic')"><i>I</i></button>
+      <button onclick="execCmd('underline')"><u>U</u></button>
+      <!-- Add more toolbar buttons as needed -->
+      <button class="clear" onclick="clearContent()">Clear</button>
+    </div>
+    <div id="editor" class="editor" contenteditable="true" oninput="debouncedSave()">
+      <%- document.content %>
+    </div>
+    <div class="autosave-notification" id="autosaveNotification"></div>
+  </div>
+
   <script>
-    // Future enhancement: integrate a library for advanced text editing (e.g., CodeMirror, Quill)
-    console.log('Text editor loaded.');
+    let saveTimer;
+    const docId = '<%= document._id %>';
+
+    function execCmd(command) {
+      document.execCommand(command, false, null);
+    }
+
+    function clearContent() {
+      document.getElementById('editor').innerHTML = '';
+      debouncedSave();
+    }
+
+    function debouncedSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveDocument, 500);
+    }
+
+    async function saveDocument() {
+      const content = document.getElementById('editor').innerHTML;
+      try {
+        const res = await fetch(`/editor/${docId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ content })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('autosaveNotification').innerText = 'Autosaved!';
+          setTimeout(() => {
+            document.getElementById('autosaveNotification').innerText = '';
+          }, 2000);
+        } else {
+          console.error('Save failed', data.error);
+        }
+      } catch(err) {
+        console.error('Error saving document:', err);
+      }
+    }
   </script>
 </body>
 </html>
