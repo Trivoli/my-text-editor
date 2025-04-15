@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Documents</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="documents-container">
+    <header>
+      <h1>My Documents</h1>
+      <div class="nav-links">
+        <a href="/documents/new" class="new-doc-btn">New Document</a>
+        <form action="/logout" method="POST" class="logout-form">
+          <button type="submit" class="logout-btn">Logout</button>
+        </form>
+      </div>
+    </header>
+    <ul>
+      <% documents.forEach(doc => { %>
+        <li class="document-item">
+          <a href="/editor/<%= doc._id %>" class="doc-title"><%= doc.title %></a>
+          <small>(Created: <%= doc.createdAt.toDateString() %>)</small>
+          <div class="doc-actions">
+            <!-- Rename Form -->
+            <form action="/documents/<%= doc._id %>/rename" method="POST" class="rename-form">
+              <input type="text" name="newTitle" placeholder="New title" required>
+              <button type="submit" class="rename-btn">Rename</button>
+            </form>
+            <!-- Delete Form -->
+            <form action="/documents/<%= doc._id %>/delete" method="POST" class="delete-form">
+              <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this document?')">Delete</button>
+            </form>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</body>
+</html>
